@@ -5,7 +5,7 @@
 {% if influxdb['version'] is defined %}
   {% set filename = "influxdb_" + influxdb['version'] + "_" + grains['osarch'] + ".deb" %}
 {% else %}
-  {% set filename = "influxdb_latest" + grains['osarch'] + ".deb" %}
+  {% set filename = "influxdb_latest_" + grains['osarch'] + ".deb" %}
 {% endif %}
 {% elif grains['os_family'] == 'RedHat' %}
 {% if influxdb['version'] is defined %}

@@ -12,6 +12,7 @@
     shell: '/bin/false'
     system_group: 'influxdb'
     system_user: 'influxdb'
+    toml_module: toml
     conf:
       bind_address: '0.0.0.0'
       port: 8086

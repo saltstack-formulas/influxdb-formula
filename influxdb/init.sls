@@ -1,5 +1,8 @@
 {% from "influxdb/map.jinja" import influxdb_settings with context %}
 
+include:
+  - influxdb.python_toml
+
 {% if grains['os_family'] == 'Debian' %}
 {% if influxdb_settings['version'] is defined %}
   {% set filename = "influxdb_" + influxdb_settings['version'] + "_" + grains['osarch'] + ".deb" %}

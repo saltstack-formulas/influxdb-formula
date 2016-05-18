@@ -1,21 +1,5 @@
 influxdb:
-  version: 0.8.5
-  # Configuration differs between influxdb versions
-  # 0.8
-  conf:
-    bind-address: '0.0.0.0'
-    logging:
-      directory: '/var/log/influxdb'
-      level: 'info'
-    admin:
-      port: 8083
-    api:
-      port: 8086
-    raft:
-      port: 8090
-    protobuf:
-      port: 8099
-  # 0.9
+  version: 0.9.6.1
   conf:
     bind_address: '0.0.0.0'
     hostname: 'foo.example.com'

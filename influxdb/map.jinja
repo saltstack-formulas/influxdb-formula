@@ -1,14 +1,8 @@
 {% import_yaml "influxdb/defaults.yaml" as version_map %}
 {% import_yaml "influxdb/os_map.yaml" as os_map %}
 
-{# Get default settings for desired version #}
-{% set influxdb_version = salt['pillar.get']('influxdb:version', '0.8') %}
-
-{% if influxdb_version.startswith('0.8') %}
-{% set defaults = version_map.get('0_8') %}
-{% else %}
+{# Get default settings for version #}
 {% set defaults = version_map.get('0_9') %}
-{% endif %}
 
 {# Filter os_map by os grain and merge overrides #}
 {% set distro_map = salt['pillar.get'](

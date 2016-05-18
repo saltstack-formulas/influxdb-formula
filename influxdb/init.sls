@@ -90,7 +90,6 @@ influxdb_logrotate:
     - watch:
       - file: influxdb_log
 
-{% if influxdb_settings.version.startswith('0.9') %}
 influxdb_default:
   file.managed:
     - name: {{ influxdb_settings.etc_default }}
@@ -99,17 +98,6 @@ influxdb_default:
     - group: root
     - mode: 755
     - template: jinja
-
-influxdb_broker_dir:
-  file.directory:
-    - name: {{ influxdb_settings.conf.broker.dir }}
-    - user: {{ influxdb_settings.system_user }}
-    - group: {{ influxdb_settings.system_group }}
-    - makedirs: True
-    - dir_mode: 755
-    - require:
-      - group: influxdb_group
-      - user: influxdb_user
 
 influxdb_data_dir:
   file.directory:
@@ -121,7 +109,6 @@ influxdb_data_dir:
     - require:
       - group: influxdb_group
       - user: influxdb_user
-{% endif %}
 
 influxdb_start:
   service.running:

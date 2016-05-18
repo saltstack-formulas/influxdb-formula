@@ -38,5 +38,4 @@
     tmpl:
       config: 'salt://influxdb/files/influxdb_0.9.config.toml.jinja'
       etc_default: 'salt://influxdb/files/influxdb_0.9.etc_default'
-      sysvinit_script: 'salt://influxdb/files/influxdb_0.9.sysvinit.jinja'
       logrotate: 'salt://influxdb/files/logrotate.conf.jinja'

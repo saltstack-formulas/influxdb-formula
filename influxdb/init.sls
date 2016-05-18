@@ -39,21 +39,6 @@ influxdb_config:
     - mode: 644
     - template: jinja
 
-remove_influxdb_init_symlink:
-  file.absent:
-    - name: {{ influxdb_settings.init_dir }}/{{ influxdb_settings.service }}
-    - onlyif:
-      - 'test -L {{ influxdb_settings.init_dir }}/{{ influxdb_settings.service }}'
-
-influxdb_init:
-  file.managed:
-    - name: {{ influxdb_settings.init_dir }}/{{ influxdb_settings.service }}
-    - source: {{ influxdb_settings.tmpl.sysvinit_script }}
-    - user: root
-    - group: root
-    - mode: 755
-    - template: jinja
-
 influxdb_group:
   group.present:
     - name: {{ influxdb_settings.system_group }}

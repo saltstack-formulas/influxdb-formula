@@ -53,7 +53,6 @@ influxdb:
     etc_default: '/etc/default/influxdb'
     fullname: 'InfluxDB Service User'
     home: '/opt/influxdb'
-    init_dir: '/etc/init.d'
     logrotate_conf: '/etc/logrotate.d/influxdb'
     shell: '/bin/false'
     system_group: 'influxdb'
@@ -61,7 +60,6 @@ influxdb:
   tmpl:
     config: 'salt://influxdb/files/influxdb_0.9.config.toml.jinja'
     default: 'salt://influxdb/files/influxdb_0.9.default'
-    sysvinit_script: 'salt://influxdb/files/influxdb_0.9.sysvinit.jinja'
     logrotate: 'salt://influxdb/files/logrotate.conf.jinja'
 
 # vi: set ft=yaml :

@@ -3,14 +3,10 @@
 {% if grains['os_family'] == 'Debian' %}
 {% if influxdb_settings['version'] is defined %}
   {% set filename = "influxdb_" + influxdb_settings['version'] + "_" + grains['osarch'] + ".deb" %}
-{% else %}
-  {% set filename = "influxdb_latest_" + grains['osarch'] + ".deb" %}
 {% endif %}
 {% elif grains['os_family'] == 'RedHat' %}
 {% if influxdb_settings['version'] is defined %}
   {% set filename = "influxdb-" + influxdb_settings['version'] + "-1." + grains['osarch'] + ".rpm" %}
-{% else %}
-  {% set filename = "influxdb-latest-1." + grains['osarch'] + ".rpm" %}
 {% endif %}
 {% endif %}
 

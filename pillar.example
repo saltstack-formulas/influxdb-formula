@@ -57,7 +57,7 @@ influxdb:
     system_user: 'influxdb'
   tmpl:
     config: 'salt://influxdb/files/influxdb_0.9.config.toml.jinja'
-    default: 'salt://influxdb/files/influxdb_0.9.default'
+    etc_default: 'salt://influxdb/files/influxdb.etc_default'
     logrotate: 'salt://influxdb/files/logrotate.conf.jinja'
 
 # vi: set ft=yaml :

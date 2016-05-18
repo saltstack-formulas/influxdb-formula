@@ -45,5 +45,5 @@
         enabled: 'false'
     tmpl:
       config: 'salt://influxdb/files/influxdb_0.9.config.toml.jinja'
-      etc_default: 'salt://influxdb/files/influxdb_0.9.etc_default'
+      etc_default: 'salt://influxdb/files/influxdb.etc_default'
       logrotate: 'salt://influxdb/files/logrotate.conf.jinja'

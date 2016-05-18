@@ -1,18 +1,23 @@
 {% import_yaml "influxdb/defaults.yaml" as version_map %}
-{% import_yaml "influxdb/os_map.yaml" as os_map %}
 
 {# Get default settings for version #}
 {% set defaults = version_map.get('0_9') %}
 
-{# Filter os_map by os grain and merge overrides #}
-{% set distro_map = salt['pillar.get'](
-    'influxdb:lookup',
-    default=salt['grains.filter_by'](os_map),
-    merge=True)
+{##
+Setup variable using grains['os_family'] based logic, only add key:values here
+that differ from whats in defaults.yaml
+##}
+
+{% set os_family_map = salt['grains.filter_by']({
+   'Debian': {},
+   'RedHat': {},
+  },
+  grain="os_family",
+  merge=salt['pillar.get']('influxdb:lookup'))
 %}
 
-{# Merge distro_map into settings dictionary #}
-{% do defaults.influxdb.update(distro_map) %}
+{## Merge the os_family_map into default settings ##}
+{% do defaults.influxdb.update(os_family_map) %}
 
 {# Get legacy pillar data for backwards compatibility #}
 {% for p_entry in ['bind-address'] %}

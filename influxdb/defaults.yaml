@@ -1,5 +1,14 @@
 0_9:
   influxdb:
+    config: '/etc/influxdb/influxdb.conf'
+    etc_default: '/etc/default/influxdb'
+    fullname: 'InfluxDB Service User'
+    home: '/opt/influxdb'
+    logrotate_conf: '/etc/logrotate.d/influxdb'
+    service: 'influxdb'
+    shell: '/bin/false'
+    system_group: 'influxdb'
+    system_user: 'influxdb'
     conf:
       bind_address: '0.0.0.0'
       port: 8086

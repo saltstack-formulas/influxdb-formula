@@ -1,8 +1,5 @@
 {% from "influxdb/map.jinja" import influxdb_settings with context %}
 
-include:
-  - influxdb.python_toml
-
 {% if grains['os_family'] == 'Debian' %}
 {% if influxdb_settings['version'] is defined %}
   {% set filename = "influxdb_" + influxdb_settings['version'] + "_" + grains['osarch'] + ".deb" %}
@@ -30,19 +27,6 @@ influxdb_install:
       - cmd: influxdb_package
     - watch:
       - cmd: influxdb_package
-
-influxdb_config:
-  file.managed:
-    - name: {{ influxdb_settings.config }}
-    - source: {{ influxdb_settings.tmpl.config }}
-    - user: root
-    - group: root
-    - makedirs: True
-    - dir_mode: 755
-    - mode: 644
-    - template: jinja
-    - require:
-      - pip: {{ influxdb_settings.toml_module }}
 
 influxdb_group:
   group.present:
@@ -80,15 +64,6 @@ influxdb_logrotate:
     - watch:
       - file: influxdb_log
 
-influxdb_default:
-  file.managed:
-    - name: {{ influxdb_settings.etc_default }}
-    - source: {{ influxdb_settings.tmpl.etc_default }}
-    - user: root
-    - group: root
-    - mode: 755
-    - template: jinja
-
 influxdb_data_dir:
   file.directory:
     - name: {{ influxdb_settings.conf.data.dir }}
@@ -106,7 +81,5 @@ influxdb_start:
     - enable: True
     - watch:
       - pkg: influxdb_install
-      - file: influxdb_config
     - require:
       - pkg: influxdb_install
-      - file: influxdb_config

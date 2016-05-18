@@ -1,4 +1,73 @@
 '0':
+  '10':
+    admin:
+      bind-address: :8083
+      enabled: true
+      https-certificate: /etc/ssl/influxdb.pem
+      https-enabled: false
+    cluster:
+      shard-writer-timeout: 5s
+      write-timeout: 10s
+    collectd:
+      enabled: false
+    continuous_queries:
+      enabled: true
+      log-enabled: true
+    data:
+      data-logging-enabled: true
+      dir: /var/lib/influxdb/data
+      enabled: true
+      max-wal-size: 104857600
+      wal-dir: /var/lib/influxdb/wal
+      wal-flush-interval: 10m
+      wal-logging-enabled: true
+      wal-partition-flush-delay: 2s
+    graphite:
+      - enabled: false
+    hinted-handoff:
+      dir: /var/lib/influxdb/hh
+      enabled: true
+      max-age: 168h
+      max-size: 1073741824
+      purge-interval: 1h
+      retry-interval: 1s
+      retry-max-interval: 1m
+      retry-rate-limit: 0
+    http:
+      auth-enabled: false
+      bind-address: :8086
+      enabled: true
+      https-certificate: /etc/ssl/influxdb.pem
+      https-enabled: false
+      log-enabled: true
+      pprof-enabled: false
+      write-tracing: false
+    meta:
+      bind-address: :8088
+      cluster-tracing: false
+      commit-timeout: 50ms
+      dir: /var/lib/influxdb/meta
+      election-timeout: 1s
+      enabled: true
+      heartbeat-timeout: 1s
+      leader-lease-timeout: 500ms
+      retention-autocreate: true
+    monitor:
+      store-database: _internal
+      store-enabled: true
+      store-interval: 10s
+    opentsdb:
+      enabled: false
+    reporting-disabled: true
+    retention:
+      check-interval: 30m
+      enabled: true
+    shard-precreation:
+      advance-period: 30m
+      check-interval: 10m
+      enabled: true
+    udp:
+      - enabled: false
   '9':
     admin:
       bind-address: ':8083'

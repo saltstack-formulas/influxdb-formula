@@ -1,10 +1,5 @@
-influxdb:
-  version: 0.9.6.1
-  no_conf_defaults: false
-  logging:
-    directory: '/var/log/influxdb'
-    file: 'influxd.log'
-  conf:
+'0':
+  '9':
     admin:
       bind-address: ':8083'
       enabled: true
@@ -69,18 +64,3 @@ influxdb:
       enabled: true
     udp:
       - enabled: false
-  lookup:
-    config: '/etc/influxdb/config.toml'
-    etc_default: '/etc/default/influxdb'
-    fullname: 'InfluxDB Service User'
-    home: '/opt/influxdb'
-    logrotate_conf: '/etc/logrotate.d/influxdb'
-    shell: '/bin/false'
-    system_group: 'influxdb'
-    system_user: 'influxdb'
-  tmpl:
-    config: 'salt://influxdb/files/influxdb.config.jinja'
-    etc_default: 'salt://influxdb/files/influxdb.etc_default'
-    logrotate: 'salt://influxdb/files/logrotate.conf.jinja'
-
-# vi: set ft=yaml :

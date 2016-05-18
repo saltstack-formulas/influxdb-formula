@@ -1,7 +1,5 @@
-{% import_yaml "influxdb/defaults.yaml" as version_map %}
-
-{# Get default settings for version #}
-{% set defaults = version_map.get('0_9') %}
+{% import_yaml "influxdb/defaults.yaml" as defaults %}
+{% import_yaml "influxdb/config_defaults.yaml" as config_defaults %}
 
 {##
 Setup variable using grains['os_family'] based logic, only add key:values here
@@ -15,6 +13,22 @@ that differ from whats in defaults.yaml
   grain="os_family",
   merge=salt['pillar.get']('influxdb:lookup'))
 %}
+
+{##
+Use configuration defaults appropriate for the version of InfluxDB that is being
+installed unless the user explicitly requested to not use any default values in
+which case normal pillar merging behaviour will be used.
+
+The formula supports different configuration file formats for each MAJOR.MINOR
+version of InfluxDB and will provide the configuration that ships with the
+latest release off that branch.
+##}
+
+{% if not salt['pillar.get']('influxdb:no_conf_defaults', False) %}
+{% set influxdb_version = salt['pillar.get']('influxdb:version') %}
+{% set major, minor = influxdb_version.split('.')[:2] %}
+{% do defaults.influxdb.conf.update(config_defaults.get(major).get(minor)) %}
+{% endif %}
 
 {## Merge the os_family_map into default settings ##}
 {% do defaults.influxdb.update(os_family_map) %}

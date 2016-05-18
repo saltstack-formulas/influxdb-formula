@@ -33,8 +33,6 @@ influxdb:
     logging:
       directory: '/var/log/influxdb'
       file: 'influxd.log'
-      write_tracing: 'false'
-      raft_tracing: 'false'
     opentsdb:
       address: '0.0.0.0'
       database: 'opentsdb_database'

@@ -91,7 +91,3 @@ retention-check-period = "{{ influxdb_settings.conf.data.retention_check_period 
 enabled = {{ influxdb_settings.conf.snapshot.enabled }}
 bind-address = "{{ influxdb_settings.conf.snapshot.bind_address }}"
 port = {{ influxdb_settings.conf.snapshot.port }}
-
-[logging]
-write-tracing = {{ influxdb_settings.conf.logging.write_tracing }}
-raft-tracing = {{ influxdb_settings.conf.logging.raft_tracing }}

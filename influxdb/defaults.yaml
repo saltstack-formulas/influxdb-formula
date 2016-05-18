@@ -34,8 +34,6 @@
       logging:
         directory: '/var/log/influxdb'
         file: 'influxd.log'
-        write_tracing: 'false'
-        raft_tracing: 'false'
       opentsdb:
         enabled: 'false'
       snapshot:

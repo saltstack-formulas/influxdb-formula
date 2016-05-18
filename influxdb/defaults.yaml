@@ -4,6 +4,9 @@
     etc_default: '/etc/default/influxdb'
     fullname: 'InfluxDB Service User'
     home: '/opt/influxdb'
+    logging:
+      directory: '/var/log/influxdb'
+      file: 'influxd.log'
     logrotate_conf: '/etc/logrotate.d/influxdb'
     service: 'influxdb'
     shell: '/bin/false'
@@ -31,9 +34,6 @@
         retention_check_period: '10m'
       initialization:
         join_urls: ''
-      logging:
-        directory: '/var/log/influxdb'
-        file: 'influxd.log'
       opentsdb:
         enabled: 'false'
       snapshot:

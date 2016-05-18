@@ -1,5 +1,8 @@
 influxdb:
   version: 0.9.6.1
+  logging:
+    directory: '/var/log/influxdb'
+    file: 'influxd.log'
   conf:
     bind_address: '0.0.0.0'
     hostname: 'foo.example.com'
@@ -30,9 +33,6 @@ influxdb:
       retention_check_period: '10m'
     initialization:
       join_urls: 'http://host:port,http://host2:port'
-    logging:
-      directory: '/var/log/influxdb'
-      file: 'influxd.log'
     opentsdb:
       address: '0.0.0.0'
       database: 'opentsdb_database'

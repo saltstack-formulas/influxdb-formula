@@ -3,7 +3,7 @@
 # WARNING: This file is managed by Salt
 # DO NOT EDIT MANUALLY
 
-{{ influxdb_settings.conf.logging.directory }}/*.log {
+{{ influxdb_settings.logging.directory }}/*.log {
   daily
   rotate 3
   copytruncate

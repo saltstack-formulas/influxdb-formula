@@ -7,4 +7,4 @@
 # Modify the config that generates this file instead
 #
 
-STDERR={{ influxdb_settings.conf.logging.directory }}/{{ influxdb_settings.conf.logging.file }}
+STDERR={{ influxdb_settings.logging.directory }}/{{ influxdb_settings.logging.file }}

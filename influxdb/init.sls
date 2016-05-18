@@ -56,7 +56,7 @@ influxdb_user:
 
 influxdb_log:
   file.directory:
-    - name: {{ influxdb_settings.conf.logging.directory }}
+    - name: {{ influxdb_settings.logging.directory }}
     - user: {{ influxdb_settings.system_user }}
     - group: {{ influxdb_settings.system_group }}
     - mode: 755

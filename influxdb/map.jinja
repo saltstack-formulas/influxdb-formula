@@ -19,28 +19,6 @@ that differ from whats in defaults.yaml
 {## Merge the os_family_map into default settings ##}
 {% do defaults.influxdb.update(os_family_map) %}
 
-{# Get legacy pillar data for backwards compatibility #}
-{% for p_entry in ['bind-address'] %}
-{% do defaults.influxdb.conf.update(
-    {
-        p_entry: salt['pillar.get'](
-            'influxdb:{}'.format(p_entry),
-            defaults.influxdb.conf.get(p_entry)
-        )
-    }
-) %}
-{% endfor %}
-
-{% for p_section in ['admin', 'api', 'raft', 'protobuf'] %}
-{% set conf_section = defaults.influxdb.conf.get('p_section', {}) %}
-{% do conf_section.update(
-    salt['pillar.get'](
-        'influxdb:{}'.format(p_section),
-        {}
-    )
-) %}
-{% endfor %}
-
 {# Update settings defaults from pillar data #}
 {% set influxdb_settings = salt['pillar.get'](
     'influxdb',

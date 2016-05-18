@@ -41,6 +41,8 @@ influxdb_config:
     - dir_mode: 755
     - mode: 644
     - template: jinja
+    - require:
+      - pip: {{ influxdb_settings.toml_module }}
 
 influxdb_group:
   group.present:

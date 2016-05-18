@@ -44,6 +44,6 @@
       udp:
         enabled: 'false'
     tmpl:
-      config: 'salt://influxdb/files/influxdb_0.9.config.toml.jinja'
+      config: 'salt://influxdb/files/influxdb.config.jinja'
       etc_default: 'salt://influxdb/files/influxdb.etc_default'
       logrotate: 'salt://influxdb/files/logrotate.conf.jinja'

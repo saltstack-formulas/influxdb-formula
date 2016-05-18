@@ -4,48 +4,70 @@ influxdb:
     directory: '/var/log/influxdb'
     file: 'influxd.log'
   conf:
-    bind_address: '0.0.0.0'
-    hostname: 'foo.example.com'
-    port: 8086
-    reporting_disabled: 'false'
-    authentication:
-      enabled: 'false'
     admin:
-      enabled: 'true'
-      port: 8083
-    api:
-      ssl_cert: '/path/to/cert.pem'
-      ssl_port: 8087
-    broker:
-      enabled: 'true'
-      dir: '/var/influxdb/raft'
+      bind-address: ':8083'
+      enabled: true
+      https-certificate: /etc/ssl/influxdb.pem
+      https-enabled: false
+    cluster: {}
     collectd:
-      address: '0.0.0.0'
-      database: 'collectd_database'
-      enabled: 'false'
-      port: 25827
-      typesdb: '/usr/share/collectd/types.db'
+      enabled: false
+    continuous_queries:
+      compute-no-more-than: 2m
+      compute-runs-per-interval: 10
+      enabled: true
+      log-enabled: true
+      recompute-no-older-than: 10m
+      recompute-previous-n: 2
     data:
-      dir: '/var/influxdb/db'
-      enabled: 'true'
-      retention_auto_create: 'true'
-      retention_check_enabled: 'true'
-      retention_check_period: '10m'
-    initialization:
-      join_urls: 'http://host:port,http://host2:port'
+      dir: /var/lib/influxdb/data
+      wal-dir: /var/lib/influxdb/wal
+      wal-logging-enabled: true
+    graphite:
+      - enabled: false
+    hinted-handoff:
+      dir: /var/lib/influxdb/hh
+      enabled: true
+      max-age: 168h
+      max-size: 1073741824
+      purge-interval: 1h
+      retry-interval: 1s
+      retry-max-interval: 1m
+      retry-rate-limit: 0
+    http:
+      auth-enabled: false
+      bind-address: ':8086'
+      enabled: true
+      https-certificate: /etc/ssl/influxdb.pem
+      https-enabled: false
+      log-enabled: true
+      pprof-enabled: false
+      write-tracing: false
+    meta:
+      bind-address: ':8088'
+      cluster-tracing: false
+      commit-timeout: 50ms
+      dir: /var/lib/influxdb/meta
+      election-timeout: 1s
+      heartbeat-timeout: 1s
+      hostname: localhost
+      leader-lease-timeout: 500ms
+      raft-promotion-enabled: true
+      retention-autocreate: true
+    monitor: {}
     opentsdb:
-      address: '0.0.0.0'
-      database: 'opentsdb_database'
-      enabled: 'false'
-      port: 4242
-    snapshot:
-      bind_address: '127.0.0.1'
-      enabled: 'true'
-      port: 8087
+      enabled: false
+    registration: {}
+    reporting-disabled: true
+    retention:
+      check-interval: 30m
+      enabled: true
+    shard-precreation:
+      advance-period: 30m
+      check-interval: 10m
+      enabled: true
     udp:
-      bind_address: '0.0.0.0'
-      enabled: 'false'
-      port: 4444
+      - enabled: false
   lookup:
     config: '/etc/influxdb/config.toml'
     etc_default: '/etc/default/influxdb'

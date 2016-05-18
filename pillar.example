@@ -1,5 +1,5 @@
 influxdb:
-  version: 0.9.6.1
+  version: 0.12.0-1
   no_conf_defaults: false
   logging:
     directory: '/var/log/influxdb'

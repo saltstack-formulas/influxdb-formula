@@ -1,7 +1,11 @@
 {% from "influxdb/map.jinja" import influxdb_settings with context -%}
 
-# WARNING: This file is managed by Salt
-# DO NOT EDIT MANUALLY
+#
+# DO NOT EDIT
+#
+# This file is managed by salt via {{ source }}
+# Modify the config that generates this file instead
+#
 
 {{ influxdb_settings.logging.directory }}/*.log {
   daily

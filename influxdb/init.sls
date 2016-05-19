@@ -26,6 +26,12 @@ influxdb_package:
     - name: wget -qO /tmp/{{ filename }} {{ base_url }}/{{ filename }}
     - unless: test -f /tmp/{{ filename }}
 
+influxdb_remove_broken_download:
+  file.absent:
+    - name: /tmp/{{ filename }}
+    - onfail:
+      - cmd: influxdb_package
+
 influxdb_install:
   pkg.installed:
     - sources:

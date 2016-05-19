@@ -1,0 +1,97 @@
+{% from "influxdb/map.jinja" import influxdb_settings with context -%}
+
+#
+# DO NOT EDIT
+#
+# This file is managed by salt via {{ source }}
+# Modify the config that generates this file instead
+#
+
+{% if influxdb_settings.conf.hostname is defined %}
+hostname = "{{ influxdb_settings.conf.hostname }}"
+{% endif %}
+bind-address = "{{ influxdb_settings.conf.bind_address }}"
+port = {{ influxdb_settings.conf.port }}
+reporting-disabled = {{ influxdb_settings.conf.reporting_disabled }}
+
+[initialization]
+join-urls = "{{ influxdb_settings.conf.initialization.join_urls }}"
+
+[authentication]
+enabled = {{ influxdb_settings.conf.authentication.enabled }}
+
+[admin]
+enabled = {{ influxdb_settings.conf.admin.enabled }}
+port = {{ influxdb_settings.conf.admin.port }}
+
+[api]
+{% if influxdb_settings.conf.ssl_port is defined
+  and influxdb_settings.conf.ssl_cert is defined %}
+ssl-port = {{ influxdb_settings.conf.api.ssl_port }}
+ssl-cert = "{{ influxdb_settings.conf.api.ssl_cert }}"
+{% endif %}
+
+[[graphite]] # 1 or more of these sections may be present.
+enabled = false
+# protocol = "" # Set to "tcp" or "udp"
+# address = "0.0.0.0" # If not set, is actually set to bind-address.
+# port = 2003
+# name-position = "last"
+# name-separator = "-"
+# database = ""  # store graphite data in this database
+
+[collectd]
+enabled = {{ influxdb_settings.conf.collectd.enabled }}
+{% if influxdb_settings.conf.collectd.address is defined %}
+address = "{{ influxdb_settings.conf.collectd.address }}"
+{% endif %}
+{% if influxdb_settings.conf.collectd.port is defined %}
+port = {{ influxdb_settings.conf.collectd.port }}
+{% endif %}
+{% if influxdb_settings.conf.collectd.database is defined %}
+database = "{{ influxdb_settings.conf.collectd.database }}"
+{% endif %}
+{% if influxdb_settings.conf.collectd.typesdb is defined %}
+typesdb = "{{ influxdb_settings.conf.collectd.typesdb }}"
+{% endif %}
+
+[opentsdb]
+enabled = {{ influxdb_settings.conf.opentsdb.enabled }}
+{% if influxdb_settings.conf.opentsdb.address is defined %}
+address = "{{ influxdb_settings.conf.opentsdb.address }}"
+{% endif %}
+{% if influxdb_settings.conf.opentsdb.port is defined %}
+port = {{ influxdb_settings.conf.opentsdb.port }}
+{% endif %}
+{% if influxdb_settings.conf.opentsdb.database is defined %}
+database = "{{ influxdb_settings.conf.opentsdb.database }}"
+{% endif %}
+
+[udp]
+enabled = {{ influxdb_settings.conf.udp.enabled }}
+{% if influxdb_settings.conf.udp.address is defined %}
+address = "{{ influxdb_settings.conf.udp.address }}"
+{% endif %}
+{% if influxdb_settings.conf.udp.port is defined %}
+port = {{ influxdb_settings.conf.udp.port }}
+{% endif %}
+
+[broker]
+enabled = {{ influxdb_settings.conf.broker.enabled }}
+dir  = "{{ influxdb_settings.conf.broker.dir }}"
+
+[data]
+enabled = {{ influxdb_settings.conf.data.enabled }}
+dir = "{{ influxdb_settings.conf.data.dir }}"
+retention-auto-create = {{ influxdb_settings.conf.data.retention_auto_create }}
+retention-check-enabled = {{ influxdb_settings.conf.data.retention_check_enabled }}
+retention-check-period = "{{ influxdb_settings.conf.data.retention_check_period }}"
+
+[snapshot]
+enabled = {{ influxdb_settings.conf.snapshot.enabled }}
+bind-address = "{{ influxdb_settings.conf.snapshot.bind_address }}"
+port = {{ influxdb_settings.conf.snapshot.port }}
+
+[logging]
+write-tracing = {{ influxdb_settings.conf.logging.write_tracing }}
+raft-tracing = {{ influxdb_settings.conf.logging.raft_tracing }}

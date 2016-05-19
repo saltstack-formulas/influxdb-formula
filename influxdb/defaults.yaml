@@ -1,19 +1,62 @@
-influxdb:
-  config: '/etc/influxdb/influxdb.conf'
-  conf: {}
-  etc_default: '/etc/default/influxdb'
-  fullname: 'InfluxDB Service User'
-  home: '/opt/influxdb'
-  logging:
-    directory: '/var/log/influxdb'
-    file: 'influxd.log'
-  logrotate_conf: '/etc/logrotate.d/influxdb'
-  service: 'influxdb'
-  shell: '/bin/false'
-  system_group: 'influxdb'
-  system_user: 'influxdb'
-  toml_module: toml
-  tmpl:
-    config: 'salt://influxdb/files/influxdb.config.jinja'
-    etc_default: 'salt://influxdb/files/influxdb.etc_default'
-    logrotate: 'salt://influxdb/files/logrotate.conf.jinja'
+0_8:
+  influxdb:
+    conf:
+      bind-address: '0.0.0.0'
+      admin:
+        port: 8083
+      api:
+        port: 8086
+        read-timeout: '5s'
+      logging:
+        directory: '/var/log/influxdb'
+        level: 'info'
+      raft:
+        port: 8090
+      protobuf:
+        port: 8083
+    tmpl:
+      config: 'salt://influxdb/files/influxdb_0.8.config.toml.jinja'
+      sysvinit_script: 'salt://influxdb/files/influxdb_0.8.sysvinit.jinja'
+      logrotate: 'salt://influxdb/files/logrotate.conf.jinja'
+0_9:
+  influxdb:
+    conf:
+      bind_address: '0.0.0.0'
+      port: 8086
+      reporting_disabled: 'false'
+      authentication:
+        enabled: 'false'
+      admin:
+        enabled: 'true'
+        port: 8083
+      broker:
+        enabled: 'true'
+        dir: '/var/influxdb/raft'
+      collectd:
+        enabled: 'false'
+      data:
+        dir: '/var/influxdb/db'
+        enabled: 'true'
+        retention_auto_create: 'true'
+        retention_check_enabled: 'true'
+        retention_check_period: '10m'
+      initialization:
+        join_urls: ''
+      logging:
+        directory: '/var/log/influxdb'
+        file: 'influxd.log'
+        write_tracing: 'false'
+        raft_tracing: 'false'
+      opentsdb:
+        enabled: 'false'
+      snapshot:
+        bind_address: '127.0.0.1'
+        enabled: 'true'
+        port: 8087
+      udp:
+        enabled: 'false'
+    tmpl:
+      config: 'salt://influxdb/files/influxdb_0.9.config.toml.jinja'
+      etc_default: 'salt://influxdb/files/influxdb_0.9.etc_default'
+      sysvinit_script: 'salt://influxdb/files/influxdb_0.9.sysvinit.jinja'
+      logrotate: 'salt://influxdb/files/logrotate.conf.jinja'

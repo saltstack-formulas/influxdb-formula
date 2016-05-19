@@ -7,4 +7,4 @@
 # Modify the config that generates this file instead
 #
 
-{{ salt['toml_lang.dumps'](influxdb_settings.conf) }}
+STDERR={{ influxdb_settings.conf.logging.directory }}/{{ influxdb_settings.conf.logging.file }}

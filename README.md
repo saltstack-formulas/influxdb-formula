@@ -55,7 +55,3 @@ Make sure the tests pass:
 ```
 kitchen verify
 ```
-
-## Author
-
-[Alfredo Palhares](https://github.com/masterkorp) \<afp@seegno.com\>

@@ -13,6 +13,9 @@ that formula also.
 
 Installs InfluxDB from [provided packages](http://influxdb.com/download/)
 
+At the moment you **have** to specify the InfluxDB version in the
+``influxdb:version`` pillar.
+
 #### ``influxdb.cli``
 
 Installs the [influxdb-cli](https://github.com/phstc/influxdb-cli) gem system wide.

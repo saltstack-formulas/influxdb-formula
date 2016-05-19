@@ -1,18 +1,29 @@
 {% from "influxdb/map.jinja" import influxdb_settings with context %}
 
-{% if grains['os_family'] == 'Debian' %}
 {% if influxdb_settings['version'] is defined %}
-  {% set filename = "influxdb_" + influxdb_settings['version'] + "_" + grains['osarch'] + ".deb" %}
-{% endif %}
-{% elif grains['os_family'] == 'RedHat' %}
-{% if influxdb_settings['version'] is defined %}
-  {% set filename = "influxdb-" + influxdb_settings['version'] + "-1." + grains['osarch'] + ".rpm" %}
-{% endif %}
+  {% set influxdb_version = salt['pillar.get']('influxdb:version') %}
+  {% set major, minor = influxdb_version.split('.')[:2] %}
+
+  {% if major == '0' and minor|int < 13 %}
+    {% set base_url = 'http://s3.amazonaws.com/influxdb' %}
+    {% if grains['os_family'] == 'Debian' %}
+      {% set filename = "influxdb_" + influxdb_settings['version'] + "-1_" + grains['osarch'] + ".deb" %}
+    {% elif grains['os_family'] == 'RedHat' %}
+      {% set filename = "influxdb-" + influxdb_settings['version'] + "-1." + grains['osarch'] + ".rpm" %}
+    {% endif %}
+  {% else %}
+    {% set base_url = 'https://dl.influxdata.com/influxdb/releases' %}
+    {% if grains['os_family'] == 'Debian' %}
+      {% set filename = "influxdb_" + influxdb_settings['version'] + "_" + grains['osarch'] + ".deb" %}
+    {% elif grains['os_family'] == 'RedHat' %}
+      {% set filename = "influxdb-" + influxdb_settings['version'] + "." + grains['osarch'] + ".rpm" %}
+    {% endif %}
+  {% endif %}
 {% endif %}
 
 influxdb_package:
   cmd.run:
-    - name: wget -qO /tmp/{{ filename }} http://s3.amazonaws.com/influxdb/{{ filename }}
+    - name: wget -qO /tmp/{{ filename }} {{ base_url }}/{{ filename }}
     - unless: test -f /tmp/{{ filename }}
 
 influxdb_install:

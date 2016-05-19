@@ -2,11 +2,6 @@
 
 Install and configure the [InfluxDB](http://influxdb.com/) service.
 
-[pip-formula](https://github.com/saltstack-formulas/pip-formula) for installing
-the [toml Python module](https://github.com/hit9/toml.py), so please configure
-that formula also.
-
-
 ## Available States
 
 #### ``influxdb``

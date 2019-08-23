@@ -11,7 +11,7 @@
     {% elif grains['os_family'] == 'RedHat' %}
       {% set filename = "influxdb-" + influxdb_settings['version'] + "-1." + grains['osarch'] + ".rpm" %}
     {% endif %}
-  {% elif major == '0' and minor >= 10 and minor|int < 13 %}
+  {% elif major == '0' and minor|int >= 10 and minor|int < 13 %}
     {% set base_url = 'http://s3.amazonaws.com/influxdb' %}
     {% if grains['os_family'] == 'Debian' %}
       {% set filename = "influxdb_" + influxdb_settings['version'] + "-1_" + grains['osarch'] + ".deb" %}

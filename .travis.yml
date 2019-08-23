@@ -2,7 +2,7 @@
 # vim: ft=yaml
 ---
 stages:
-  # - test
+  - test
   - commitlint
   - name: release
     if: branch = master AND type != pull_request

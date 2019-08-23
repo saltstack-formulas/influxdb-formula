@@ -1,6 +1,6 @@
 ---
 influxdb:
-  version: 0.12.0-1
+  version: 0.12.0
   no_conf_defaults: false
   use_wget_on_install: True
   logging:

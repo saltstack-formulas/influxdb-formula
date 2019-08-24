@@ -8,21 +8,21 @@
     {% set base_url = 'http://s3.amazonaws.com/influxdb' %}
     {% if grains['os_family'] == 'Debian' %}
       {% set filename = "influxdb_" + influxdb_settings['version'] + "_" + grains['osarch'] + ".deb" %}
-    {% elif grains['os_family'] == 'RedHat' %}
+    {% elif grains['os_family'] == 'RedHat' or grains['os_family'] == 'Suse' %}
       {% set filename = "influxdb-" + influxdb_settings['version'] + "-1." + grains['osarch'] + ".rpm" %}
     {% endif %}
   {% elif major == '0' and minor|int >= 10 and minor|int < 13 %}
     {% set base_url = 'http://s3.amazonaws.com/influxdb' %}
     {% if grains['os_family'] == 'Debian' %}
       {% set filename = "influxdb_" + influxdb_settings['version'] + "-1_" + grains['osarch'] + ".deb" %}
-    {% elif grains['os_family'] == 'RedHat' %}
+    {% elif grains['os_family'] == 'RedHat' or grains['os_family'] == 'Suse' %}
       {% set filename = "influxdb-" + influxdb_settings['version'] + "-1." + grains['osarch'] + ".rpm" %}
     {% endif %}
   {% else %}
     {% set base_url = 'https://dl.influxdata.com/influxdb/releases' %}
     {% if grains['os_family'] == 'Debian' %}
       {% set filename = "influxdb_" + influxdb_settings['version'] + "_" + grains['osarch'] + ".deb" %}
-    {% elif grains['os_family'] == 'RedHat' %}
+    {% elif grains['os_family'] == 'RedHat' or grains['os_family'] == 'Suse' %}
       {% set filename = "influxdb-" + influxdb_settings['version'] + "." + grains['osarch'] + ".rpm" %}
     {% endif %}
   {% endif %}
@@ -49,6 +49,18 @@ influxdb_install:
       - cmd: influxdb_package
     - watch:
       - cmd: influxdb_package
+  {% if grains['os_family'] == 'Suse' %}
+    - skip_verify: true
+  {% endif %}
+
+
+{% if grains['os_family'] == 'Suse' %}
+influxdb_install_systemd_unit:
+  file.copy:
+    - name: /usr/lib/systemd/system/influxdb.service
+    - source: /usr/lib/influxdb/scripts/influxdb.service
+{% endif %}
+
 {% else %}
 
 

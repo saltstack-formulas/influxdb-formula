@@ -130,7 +130,7 @@ suites:
             '*':
               - influxdb
       pillars_from_files:
-        influxdb.sls: test/salt/default/pillar/influxdb.sls
+        influxdb.sls: test/salt/pillar/influxdb.sls
     verifier:
       inspec_tests:
         - path: test/integration/default

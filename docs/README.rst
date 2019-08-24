@@ -53,7 +53,7 @@ At the moment you **have** to specify the InfluxDB version in the
 ``influxdb:version`` pillar.
 
 ``influxdb.cli``
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 Installs the [influxdb-cli](https://github.com/phstc/influxdb-cli) gem system wide.
 
 ``influxdb.config``
@@ -86,31 +86,31 @@ Requirements
    $ gem install bundler
    $ bundle install
    $ bin/kitchen test [platform]
-Where ``[platform]`` is the platform name defined in ``kitchen.yml``,
-e.g. ``debian-9-2019-2-py3``.
+
+Where ``[platform]`` is the platform name defined in ``kitchen.yml``, e.g. ``debian-9-2019-2-py3``.
 
 
 ``bin/kitchen converge``
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Creates the docker instance and runs the ``influxdb`` main state, ready for testing.
 
 ``bin/kitchen verify``
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 Runs the ``inspec`` tests on the actual instance.
 
 ``bin/kitchen destroy``
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Removes the docker instance.
 
 ``bin/kitchen test``
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 Runs all of the stages above in one go: i.e. ``destroy`` + ``converge`` + ``verify`` + ``destroy``.
 
 ``bin/kitchen login``
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 Gives you SSH access to the instance for manual testing.

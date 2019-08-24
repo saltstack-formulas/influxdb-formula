@@ -70,7 +70,7 @@ influxdb_user:
     - fullname: {{ influxdb_settings.fullname }}
     - shell: {{ influxdb_settings.shell }}
     - home: {{ influxdb_settings.home }}
-    - gid_from_name: True
+    - gid: {{ influxdb_settings.system_user }}
     - require:
       - group: influxdb_group
 

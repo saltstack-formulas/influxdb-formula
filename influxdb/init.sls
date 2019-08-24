@@ -31,7 +31,7 @@
 {% if influxdb_settings['use_wget_on_install'] == True %}
 influxdb_package:
   cmd.run:
-    - name: wget -qO /tmp/{{ filename }} {{ base_url }}/{{ filename }}
+    - name: curl -s --output /tmp/{{ filename }} {{ base_url }}/{{ filename }}
     - unless: test -f /tmp/{{ filename }}
 
 influxdb_remove_broken_download:

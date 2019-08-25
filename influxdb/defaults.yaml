@@ -2,23 +2,18 @@
 # vim: ft=yaml
 ---
 influxdb:
-  config: '/etc/influxdb/influxdb.conf'
-  conf: {}
-  etc_default: '/etc/default/influxdb'
-  fullname: 'InfluxDB Service User'
-  home: '/var/lib/influxdb'
-  logging:
-    directory: '/var/log/influxdb'
-    file: 'influxd.log'
-  logrotate_conf: '/etc/logrotate.d/influxdb'
-  pip_pkg: 'python-pip'
-  service: 'influxdb'
-  shell: '/bin/false'
-  system_group: 'influxdb'
-  system_user: 'influxdb'
-  toml_module: toml
-  use_wget_on_install: true
-  tmpl:
-    config: 'salt://influxdb/files/influxdb.config.jinja'
-    etc_default: 'salt://influxdb/files/influxdb.etc_default'
-    logrotate: 'salt://influxdb/files/logrotate.conf.jinja'
+  config: /etc/influxdb/influxdb.conf
+  system_user: root
+  system_group: root
+  toml_pkg: python-pytoml
+  pkg:
+    name: influxdb
+  service:
+    name: influxdb
+  conf:
+    meta:
+      dir: /var/lib/influxdb/meta
+    data:
+      dir: /var/lib/influxdb/data
+      wal-dir: /var/lib/influxdb/wal
+      series-id-set-cache-size: 100

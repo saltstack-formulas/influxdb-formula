@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+#
+# Setup variables using grains['os_family'] based logic.
+# You just need to add the key:values for an `os_family` that differ
+# from `defaults.yaml` + `osarch.yaml`.
+# Only add an `os_family` which is/will be supported by the formula.
+#
+# If you do not need to provide defaults via the `os_family` grain,
+# you will need to provide at least an empty dict in this file, e.g.
+# osfamilymap: {}
+---
+Debian:
+  repo:
+    humanname: influxdb repo
+    name: deb https://repos.influxdata.com/debian {{ grains['oscodename'] }} stable
+    file: /etc/apt/sources.list.d/influxdata.list
+    key_url: https://repos.influxdata.com/influxdb.key
+
+RedHat:
+  repo:
+    humanname: influxdb repo
+    name: influxdb
+    enabled: true
+    gpgcheck: 1
+    baseurl: https://repos.influxdata.com/rhel/$releasever/$basearch/stable/
+    gpgkey: https://repos.influxdata.com/influxdb.key
+
+Suse:
+  repo:
+    humanname: influxdb repo
+    name: influxdb
+    enabled: 1
+    gpgautoimport: true
+    # yamllint disable-line rule:line-length
+    baseurl: https://download.opensuse.org/repositories/Cloud:/OpenStack:/Master/openSUSE_Leap_$releasever

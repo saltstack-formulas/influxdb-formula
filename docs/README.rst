@@ -47,29 +47,23 @@ Available states
 
 ``influxdb``
 ^^^^^^^^^^^^
-Installs InfluxDB from [provided packages](http://influxdb.com/download/).
+Installs and configures the influxdb package from upstream repository.
 
-At the moment you **have** to specify the InfluxDB version in the
-``influxdb:version`` pillar.
+``influxdb.repo``
+^^^^^^^^^^^^^^^^^
+Installs the influxdb repository. See `InfluxDB doc <https://docs.influxdata.com/influxdb/v1.7/introduction/installation/#installing-influxdb-oss>`_ for more details.
 
-``influxdb.cli``
-^^^^^^^^^^^^^^^^
-Installs the [influxdb-cli](https://github.com/phstc/influxdb-cli) gem system wide.
+``influxdb.package``
+^^^^^^^^^^^^^^^^^^^^
+Installs the influxdb package.
 
 ``influxdb.config``
 ^^^^^^^^^^^^^^^^^^^
-Renders the InfluxDB configuration from data provided in the ``influxdb:conf``
-pillar.
+This state manages the file ``influxdb.conf`` under ``/etc/influxdb`` (template found in "influxdb/files"). The configuration is populated by values in "influxdb/map.jinja" based on the package's default values (and RedHat, Debian, Suse and Arch family distribution specific values), which can then be overridden by values of the same name in pillar.
 
-It requires the installation of the
-[toml Python module](https://github.com/hit9/toml.py) via pip.
-
-The formula ships with default configuration settings for various minor versions
-of InfluxDB. That means that, if you define configuration settings in your
-``influxdb.conf`` pillar, your settings will be merged with the default ones of
-that minor version. You can set ``influxdb:no_conf_defaults`` in your pillar if
-you want to completely specify the configuration yourself, without falling back
-to defaults.
+``influxdb.service``
+^^^^^^^^^^^^^^^^^^^^
+Manages the startup and running state of the influxdb service.
 
 Testing
 -------
@@ -115,4 +109,3 @@ Runs all of the stages above in one go: i.e. ``destroy`` + ``converge`` + ``veri
 ^^^^^^^^^^^^^^^^^^^^^
 
 Gives you SSH access to the instance for manual testing.
-

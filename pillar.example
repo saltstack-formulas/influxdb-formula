@@ -86,5 +86,3 @@ influxdb:
     config: 'salt://influxdb/files/influxdb.config.jinja'
     etc_default: 'salt://influxdb/files/influxdb.etc_default'
     logrotate: 'salt://influxdb/files/logrotate.conf.jinja'
-
-# vi: set ft=yaml :

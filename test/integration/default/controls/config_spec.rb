@@ -5,7 +5,11 @@ control 'InfluxDB configuration' do
 
   describe file('/etc/influxdb/influxdb.conf') do
     # Default config
-    its('content') { should include '[admin]' }
-    its('content') { should include 'bind-address = ":8083"' }
+    its('content') { should include '[meta]' }
+    its('content') { should include 'dir = "/var/lib/influxdb/meta"' }
+
+    # Custom config
+    its('content') { should include '[logging]' }
+    its('content') { should include 'level = "debug"' }
   end
 end

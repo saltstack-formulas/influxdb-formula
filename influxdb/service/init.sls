@@ -2,7 +2,4 @@
 # vim: ft=sls
 
 include:
-  - .repo
-  - .package
-  - .config
-  - .service
+  - .running

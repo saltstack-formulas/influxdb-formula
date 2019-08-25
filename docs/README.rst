@@ -14,7 +14,7 @@ influxdb-formula
    :scale: 100%
    :target: https://github.com/semantic-release/semantic-release
 
-Formula to set up and configure influxdb
+Formula to set up and configure influxdb.
 
 .. contents:: **Table of Contents**
 
@@ -47,7 +47,7 @@ Available states
 
 ``influxdb``
 ^^^^^^^^^^^^
-Installs InfluxDB from [provided packages](http://influxdb.com/download/)
+Installs InfluxDB from [provided packages](http://influxdb.com/download/).
 
 At the moment you **have** to specify the InfluxDB version in the
 ``influxdb:version`` pillar.
@@ -83,12 +83,13 @@ Requirements
 * Docker
 
 .. code-block:: bash
+
    $ gem install bundler
    $ bundle install
    $ bin/kitchen test [platform]
 
-Where ``[platform]`` is the platform name defined in ``kitchen.yml``, e.g. ``debian-9-2019-2-py3``.
-
+Where ``[platform]`` is the platform name defined in ``kitchen.yml``,
+e.g. ``debian-9-2019-2-py3``.
 
 ``bin/kitchen converge``
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -114,3 +115,4 @@ Runs all of the stages above in one go: i.e. ``destroy`` + ``converge`` + ``veri
 ^^^^^^^^^^^^^^^^^^^^^
 
 Gives you SSH access to the instance for manual testing.
+

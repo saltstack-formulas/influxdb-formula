@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
 influxdb:
   config: '/etc/influxdb/influxdb.conf'
   conf: {}
@@ -14,7 +17,7 @@ influxdb:
   system_group: 'influxdb'
   system_user: 'influxdb'
   toml_module: toml
-  use_wget_on_install: True
+  use_wget_on_install: true
   tmpl:
     config: 'salt://influxdb/files/influxdb.config.jinja'
     etc_default: 'salt://influxdb/files/influxdb.etc_default'

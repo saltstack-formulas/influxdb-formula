@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.3.1](https://github.com/saltstack-formulas/influxdb-formula/compare/v0.3.0...v0.3.1) (2019-10-10)
+
+
+### Bug Fixes
+
+* **map.jinja:** fix `salt-lint` errors ([](https://github.com/saltstack-formulas/influxdb-formula/commit/d7b9682))
+
+
+### Continuous Integration
+
+* **kitchen:** change `log_level` to `debug` instead of `info` ([](https://github.com/saltstack-formulas/influxdb-formula/commit/cbf8691))
+* **kitchen:** install required packages to bootstrapped `opensuse` [skip ci] ([](https://github.com/saltstack-formulas/influxdb-formula/commit/a4718ee))
+* **kitchen:** use bootstrapped `opensuse` images until `2019.2.2` [skip ci] ([](https://github.com/saltstack-formulas/influxdb-formula/commit/6690ed8))
+* **kitchen+travis:** replace EOL pre-salted images ([](https://github.com/saltstack-formulas/influxdb-formula/commit/8d1a0ae))
+* **platform:** add `arch-base-latest` (commented out for now) [skip ci] ([](https://github.com/saltstack-formulas/influxdb-formula/commit/c651f74))
+* **yamllint:** add rule `empty-values` & use new `yaml-files` setting ([](https://github.com/saltstack-formulas/influxdb-formula/commit/ecfe10d))
+* merge travis matrix, add `salt-lint` & `rubocop` to `lint` job ([](https://github.com/saltstack-formulas/influxdb-formula/commit/9f4f588))
+* use `dist: bionic` & apply `opensuse-leap-15` SCP error workaround ([](https://github.com/saltstack-formulas/influxdb-formula/commit/e36e78a))
+
 # [0.3.0](https://github.com/saltstack-formulas/influxdb-formula/compare/v0.2.1...v0.3.0) (2019-08-25)
 
 

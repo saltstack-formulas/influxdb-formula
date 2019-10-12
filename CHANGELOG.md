@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.2](https://github.com/saltstack-formulas/influxdb-formula/compare/v0.3.1...v0.3.2) (2019-10-12)
+
+
+### Bug Fixes
+
+* **rubocop:** add fixes using `rubocop --safe-auto-correct` ([](https://github.com/saltstack-formulas/influxdb-formula/commit/a9245c2))
+
+
+### Continuous Integration
+
+* merge travis matrix, add `salt-lint` & `rubocop` to `lint` job ([](https://github.com/saltstack-formulas/influxdb-formula/commit/b8049e2))
+* **travis:** merge `rubocop` linter into main `lint` job ([](https://github.com/saltstack-formulas/influxdb-formula/commit/84c5486))
+
 ## [0.3.1](https://github.com/saltstack-formulas/influxdb-formula/compare/v0.3.0...v0.3.1) (2019-10-10)
 
 

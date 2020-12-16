@@ -1,5 +1,48 @@
 # Changelog
 
+## [0.3.3](https://github.com/saltstack-formulas/influxdb-formula/compare/v0.3.2...v0.3.3) (2020-12-16)
+
+
+### Bug Fixes
+
+* **release.config.js:** use full commit hash in commit link [skip ci] ([4f2c4a5](https://github.com/saltstack-formulas/influxdb-formula/commit/4f2c4a5973fb458ca02c0f1dd6c0dca2c2f65d8c))
+
+
+### Continuous Integration
+
+* **gemfile:** restrict `train` gem version until upstream fix [skip ci] ([9ac0fac](https://github.com/saltstack-formulas/influxdb-formula/commit/9ac0facd41b53807362e77800dfa68b1e70f22d7))
+* **gemfile.lock:** add to repo with updated `Gemfile` [skip ci] ([78abe11](https://github.com/saltstack-formulas/influxdb-formula/commit/78abe118ef5437306c3c179224d955a6d51a40c4))
+* **gitlab-ci:** use GitLab CI as Travis CI replacement ([09e1ffe](https://github.com/saltstack-formulas/influxdb-formula/commit/09e1ffec12a94f76a4ba6c43dedb237ef2709abc))
+* **kitchen:** avoid using bootstrap for `master` instances [skip ci] ([f2ba8bd](https://github.com/saltstack-formulas/influxdb-formula/commit/f2ba8bd011d19471c2d7e1cec2255bab45dbbe22))
+* **kitchen:** use `debian-10-master-py3` instead of `develop` [skip ci] ([1ada26c](https://github.com/saltstack-formulas/influxdb-formula/commit/1ada26c8fc6b1775c3c629925f6f46733fb349f5))
+* **kitchen:** use `develop` image until `master` is ready (`amazonlinux`) [skip ci] ([489ac8c](https://github.com/saltstack-formulas/influxdb-formula/commit/489ac8c796a97194a028237cd8e06196cd96a559))
+* **kitchen:** use `saltimages` Docker Hub where available [skip ci] ([5ca8b9a](https://github.com/saltstack-formulas/influxdb-formula/commit/5ca8b9a0ea964378a106162b1c9430dff0577d5a))
+* **kitchen+travis:** remove `master-py2-arch-base-latest` [skip ci] ([d8372de](https://github.com/saltstack-formulas/influxdb-formula/commit/d8372ded6b29dac3d00509ff884cfc86879b5269))
+* **kitchen+travis:** upgrade matrix after `2019.2.2` release [skip ci] ([61edc79](https://github.com/saltstack-formulas/influxdb-formula/commit/61edc797f94783cc76104af95910aad7f17d66b9))
+* **pre-commit:** add to formula [skip ci] ([172b5b4](https://github.com/saltstack-formulas/influxdb-formula/commit/172b5b45c01e3a9802fe1e832d316e835ff49381))
+* **pre-commit:** enable/disable `rstcheck` as relevant [skip ci] ([fabc9eb](https://github.com/saltstack-formulas/influxdb-formula/commit/fabc9eb9d3803619200260ccc9f203a49bf44ee9))
+* **pre-commit:** finalise `rstcheck` configuration [skip ci] ([c80c66e](https://github.com/saltstack-formulas/influxdb-formula/commit/c80c66eea00773693ad5175ec57387cc01f1dd19))
+* **travis:** add notifications => zulip [skip ci] ([0bc4566](https://github.com/saltstack-formulas/influxdb-formula/commit/0bc456623511153e000f4644f0cffeafc2aa044c))
+* **travis:** apply changes from build config validation [skip ci] ([c4ade2b](https://github.com/saltstack-formulas/influxdb-formula/commit/c4ade2b8971b6ef065ea324b5a4ffcf799766910))
+* **travis:** opt-in to `dpl v2` to complete build config validation [skip ci] ([b09be58](https://github.com/saltstack-formulas/influxdb-formula/commit/b09be58fd99ef57b42bc1c6d83eeace9005ee884))
+* **travis:** quote pathspecs used with `git ls-files` [skip ci] ([c8f134e](https://github.com/saltstack-formulas/influxdb-formula/commit/c8f134ebd4fe919d8cf8ad5aaa7fe154d6d2eebb))
+* **travis:** run `shellcheck` during lint job [skip ci] ([2994fa6](https://github.com/saltstack-formulas/influxdb-formula/commit/2994fa6301aea395c871704a0308b281ed8e854e))
+* **travis:** update `salt-lint` config for `v0.0.10` [skip ci] ([834e3df](https://github.com/saltstack-formulas/influxdb-formula/commit/834e3df3c8c22b82f50e5e0d62545c8bbdf61b63))
+* **travis:** use `major.minor` for `semantic-release` version [skip ci] ([3d280b1](https://github.com/saltstack-formulas/influxdb-formula/commit/3d280b14a7b0ebbac236987078fca62b3fd54fe3))
+* **travis:** use build config validation (beta) [skip ci] ([b6cc703](https://github.com/saltstack-formulas/influxdb-formula/commit/b6cc703133f23594295915f80a1c6eb2ac052273))
+* **workflows/commitlint:** add to repo [skip ci] ([d80c8c6](https://github.com/saltstack-formulas/influxdb-formula/commit/d80c8c63a159e3c22227153f7527cb0c1547d552))
+
+
+### Documentation
+
+* **contributing:** remove to use org-level file instead [skip ci] ([ff4f0fd](https://github.com/saltstack-formulas/influxdb-formula/commit/ff4f0fd5ea0556adb0b5aa92f67917dafc796276))
+* **readme:** update link to `CONTRIBUTING` [skip ci] ([f6d3bfb](https://github.com/saltstack-formulas/influxdb-formula/commit/f6d3bfbd0759bc28a1b3f6d2fe075f3e99fc9778))
+
+
+### Performance Improvements
+
+* **travis:** improve `salt-lint` invocation [skip ci] ([b995d48](https://github.com/saltstack-formulas/influxdb-formula/commit/b995d4888126b9119234e1fdf8fd1acfa3327b2b))
+
 ## [0.3.2](https://github.com/saltstack-formulas/influxdb-formula/compare/v0.3.1...v0.3.2) (2019-10-12)
 
 

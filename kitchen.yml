@@ -312,6 +312,7 @@ suites:
       state_top:
         base:
           '*':
+            - influxdb._mapdata
             - influxdb
       pillars:
         top.sls:
